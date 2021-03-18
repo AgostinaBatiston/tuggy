@@ -73,7 +73,7 @@ function sumar_productos() {
 
     parrafo.innerHTML = "El total es: " + total;
 
-    document.main.appendChild(parrafo);
+    document.body.appendChild(parrafo);
 
     for (var i = 0; i < listaPrecio.length; i++) {
         var parrafo = document.createElement("p");
