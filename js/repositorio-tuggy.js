@@ -25,7 +25,7 @@ var producto2 = new miProducto('Prod 2', 800);
 
 
 
-
+/*
 var lista = document.createElement("div");
 lista.classList.add("mi_lista");
 document.body.appendChild(lista);
@@ -42,4 +42,42 @@ for (var i = 0; i < 10; i++) {
     }
 
 
+} */
+
+
+var listaPrecio = [];
+var listaArticulos = [];
+
+function agregar() {
+    var precio = parseInt(document.getElementById("precio").value);
+    listaPrecio.push(precio);
+
+    var articulo = document.getElementById("articulo").value;
+    listaArticulos.push(articulo);
+
+
+    console.log("Articulo: " + articulo + " Precio :" + precio);
+
+}
+
+function sumar_productos() {
+    var total = 0;
+
+    for (var i = 0; i < listaPrecio.length; i++) {
+        total = total + listaPrecio[i];
+    }
+
+    console.log(total);
+
+    var parrafo = document.createElement("p");
+
+    parrafo.innerHTML = "El total es: " + total;
+
+    document.main.appendChild(parrafo);
+
+    for (var i = 0; i < listaPrecio.length; i++) {
+        var parrafo = document.createElement("p");
+        parrafo.innerHTML = "Articulo: " + listaArticulos[i] + " Precio :" + listaPrecio[i];
+        document.body.appendChild(parrafo);
+    }
 }
