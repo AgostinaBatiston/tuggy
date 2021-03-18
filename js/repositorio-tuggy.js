@@ -77,7 +77,7 @@ function sumar_productos() {
 
     for (var i = 0; i < listaPrecio.length; i++) {
         var parrafo = document.createElement("p");
-        parrafo.innerHTML = "Articulo: " + listaArticulos[i] + " Precio :" + listaPrecio[i];
+        parrafo.innerHTML = "Articulo: " + listaArticulos[i] + " Precio: " + listaPrecio[i];
         document.body.appendChild(parrafo);
     }
 }
