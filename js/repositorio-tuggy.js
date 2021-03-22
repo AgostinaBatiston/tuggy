@@ -1,27 +1,59 @@
-class ShoppingCart {
-    constructor() {
-        this.cart = [];
-    }
-    getAdd = function(prod) {
-        this.cart.push(prod);
-    }
-    getFullCart = function() {
-        console.log('Tenés ' + this.cart.length + ' productos en el carrito');
-        for (var i = 0; i < this.cart.length; i++) {
-            console.log(this.cart[i]);
-        }
-    }
-}
-class miProducto {
-    constructor(nombre, precio) {
+var datos = {
+    "productos": [
+        { "nombre": "Alphonse y edward", "precio": 1000, "descuento": 10 },
+        { "nombre": "Pidgeotto", "precio": 800, "descuento": 10 },
+        { "nombre": "Llaverito", "precio": 450, "descuento": 10 },
+        { "nombre": "Llavero", "precio": 550, "descuento": 10 },
+        { "nombre": "Llavero perro/a", "precio": 600, "descuento": 10 },
+        { "nombre": "Llavero gato/a", "precio": 550, "descuento": 10 },
+    ]
+};
+
+
+
+
+class Producto {
+    constructor(nombre, precio, descuento) {
         this.nombre = nombre;
         this.precio = precio;
+        this.descuento = descuento;
+    }
+    getPrecioFinal = function() {
+        return this.precio - this.precio * (this.descuento / 100);
+    }
+}
+
+
+class Carrito_compra {
+    constructor(numero_carro) {
+        this.numero_carro = numero_carro;
+        this.carro = [];
+    }
+
+    agregar_compra = function(producto) {
+        this.carro.push(producto);
+    }
+    toString = function() {
+        return this.numero_carro;
+    }
+    getPrecio = function() {
+        var suma = 0;
+        for (var i = 0; i < this.carro.lenght; i++) {
+            suma = suma + this.carro[i].getPrecioFinal();
+        }
+
+        return suma;
     }
 
 }
 
-var producto1 = new miProducto('Prod 1', 450);
-var producto2 = new miProducto('Prod 2', 800);
+var carro_compra = new Carrito_compra(1);
+for (var i = 0; i < datos.productos.length; i++) {
+    carro_compra.agregar_compra(new Producto(datos.productos[i].nombre, datos.productos[i].precio, datos.productos[i].descuento));
+}
+
+console.log(carro_compra.getPrecio());
+
 
 
 
