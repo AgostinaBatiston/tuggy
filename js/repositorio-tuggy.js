@@ -47,13 +47,26 @@ class Carrito_compra {
 
 }
 
-var carro_compra = new Carrito_compra(1);
-for (var i = 0; i < datos.productos.length; i++) {
-    carro_compra.agregar_compra(new Producto(datos.productos[i].nombre, datos.productos[i].precio, datos.productos[i].descuento));
+function sumar_productos() {
+
+    var carro_compra = new Carrito_compra(1);
+    for (var i = 0; i < datos.productos.length; i++) {
+        carro_compra.agregar_compra(new Producto(datos.productos[i].nombre, datos.productos[i].precio, datos.productos[i].descuento));
+    }
+
+
+    var parrafo = document.createElement("p");
+
+    parrafo.innerHTML = "El total es: " + total;
+
+    document.body.appendChild(parrafo);
+
+    for (var i = 0; i < datos.productos.length; i++) {
+        var parrafo = document.createElement("p");
+        parrafo.innerHTML = "Articulo: " + datos.productos[i].nombre + " Precio: " + datos.prodcutos[i].precio;
+        document.body.appendChild(parrafo);
+    }
 }
-
-console.log(carro_compra.getPrecio());
-
 
 
 
@@ -75,41 +88,3 @@ for (var i = 0; i < 10; i++) {
 
 
 } */
-
-
-var listaPrecio = [];
-var listaArticulos = [];
-
-function agregar() {
-    var precio = parseInt(document.getElementById("precio").value);
-    listaPrecio.push(precio);
-
-    var articulo = document.getElementById("articulo").value;
-    listaArticulos.push(articulo);
-
-
-    console.log("Articulo: " + articulo + " Precio :" + precio);
-
-}
-
-function sumar_productos() {
-    var total = 0;
-
-    for (var i = 0; i < listaPrecio.length; i++) {
-        total = total + listaPrecio[i];
-    }
-
-    console.log(total);
-
-    var parrafo = document.createElement("p");
-
-    parrafo.innerHTML = "El total es: " + total;
-
-    document.body.appendChild(parrafo);
-
-    for (var i = 0; i < listaPrecio.length; i++) {
-        var parrafo = document.createElement("p");
-        parrafo.innerHTML = "Articulo: " + listaArticulos[i] + " Precio: " + listaPrecio[i];
-        document.body.appendChild(parrafo);
-    }
-}
