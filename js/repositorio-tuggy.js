@@ -47,23 +47,30 @@ class Carrito_compra {
 
 }
 
-function sumar_productos() {
 
+function agregar() {
     var carro_compra = new Carrito_compra(1);
     for (var i = 0; i < datos.productos.length; i++) {
         carro_compra.agregar_compra(new Producto(datos.productos[i].nombre, datos.productos[i].precio, datos.productos[i].descuento));
     }
+    console.log(carro_compra.getPrecio());
+
+}
+
+
+function sumar_productos() {
+
 
 
     var parrafo = document.createElement("p");
 
-    parrafo.innerHTML = "El total es: " + total;
+    parrafo.innerHTML = "El total es: ";
 
     document.body.appendChild(parrafo);
 
     for (var i = 0; i < datos.productos.length; i++) {
         var parrafo = document.createElement("p");
-        parrafo.innerHTML = "Articulo: " + datos.productos[i].nombre + " Precio: " + datos.prodcutos[i].precio;
+        parrafo.innerHTML = "Articulo: " + datos.productos[i].nombre + " Precio: " + datos.productos[i].precio;
         document.body.appendChild(parrafo);
     }
 }
