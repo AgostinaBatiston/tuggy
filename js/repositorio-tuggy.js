@@ -60,11 +60,7 @@ function agregar() {
 
 function sumar_productos() {
 
-
-
     var parrafo = document.createElement("p");
-
-    parrafo.innerHTML = "El total es: ";
 
     document.body.appendChild(parrafo);
 
