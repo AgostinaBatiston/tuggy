@@ -131,40 +131,17 @@
         <section class="page-section contacto__fondo">
             <div class="container">
                 <h1 class="text-center text-uppercase text-secondary mb-0 animate__animated animate__bounceInDown">Contacto</h1>
-                <!-- Contact Section Form-->
-                <div class="row">
-                    <div class="col-lg-8 mx-auto text-white">
-
-                        <form id="contactForm" name="sentMessage" novalidate="novalidate">
-                            <div class="control-group">
-                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                                    <label>Nombre</label>
-                                    <input class="form-control nombreContacto" id="name" type="text" placeholder="Nombre" required="required" data-validation-required-message="Ingrese su nombre." />
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-
-                            <div class="control-group">
-                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                                    <label>Email</label>
-                                    <input class="form-control emailContacto" id="email" type="email" placeholder="Email" required="required" data-validation-required-message="Ingrese su email." />
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-
-                            <div class="control-group">
-                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                                    <label>Mensaje</label>
-                                    <textarea class="form-control mensajeContacto" id="message" rows="5" placeholder="Mensaje..." required="required" data-validation-required-message="Deje su mensaje."></textarea>
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <br />
-                            <div id="success"></div>
-                            <div class="form-group contacto"><button class="btn btn-xl contacto__botonEnviar--color" id="sendMessageButton" type="submit">Enviar</button></div>
-                        </form>
-                    </div>
+                <div class="mb-3">
+                    <label for="emailContacto" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="emailContacto" placeholder="Email">
                 </div>
+                <div class="mb-3">
+                    <label for="mensajeContacto" class="form-label">Mensaje</label>
+                    <textarea class="form-control" id="mensajeContacto" rows="3"></textarea>
+                </div>
+                <br>
+                <button type="button" class="btn btn-secondary btn-lg" onclick="enviar_datos()">Enviar</button>
+
             </div>
         </section>
     </main>
