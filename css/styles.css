@@ -94,12 +94,6 @@ body {
     width: 100%;
 }
 
-.imagenNerdomancers {
-    display: block;
-    width: 100%;
-    height: auto;
-}
-
 .overlay {
     position: absolute;
     top: 0;
@@ -146,12 +140,20 @@ body {
     background-image: url("imagenes/pasteles.jpg");
 }
 
-.fondoNerdo {
-    background-image: url("imagenes/galaxia.jpg");
-}
-
 .fondoTienda {
     background-image: url("imagenes/pastel.jpg");
+}
+
+.productoTienda {
+    border: 2px solid #000;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: white;
+}
+
+.productoTitulo {
+    text-align: center;
+    font-weight: 600;
 }
 
 hr {
@@ -10443,5 +10445,9 @@ form .row:first-child .floating-label-form-group {
 }
 
 .copyright {
+    background-color: #342442;
+}
+
+copyright {
     background-color: #342442;
 }
