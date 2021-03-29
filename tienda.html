@@ -67,7 +67,7 @@
                                     <div class="detalles_producto">
                                         <p>Peluches medianos</p>
                                         <h4 class="precio_producto">$900</h4>
-                                        <button class="boton_producto btn btn-primary" onclick=" agregar()">AÑADIR AL CARRITO</button>
+                                        <button class="boton_producto btn btn-primary" onclick="carro_compra.agregar_compra(1)">AÑADIR AL CARRITO</button>
                                     </div>
                                 </div>
                             </div>
@@ -82,7 +82,7 @@
                                     <div class="detalles_producto">
                                         <p>Peluche grande</p>
                                         <h4 class="precio_producto">$650</h4>
-                                        <button class="boton_producto btn btn-primary" onclick=" agregar()">AÑADIR AL CARRITO</button>
+                                        <button class="boton_producto btn btn-primary" onclick="carro_compra.agregar_compra(2)">AÑADIR AL CARRITO</button>
                                     </div>
                                 </div>
                             </div>
@@ -98,7 +98,7 @@
                                     <div class="detalles_producto">
                                         <p>Llaverito</p>
                                         <h4 class="precio_producto">$300 c/u</h4>
-                                        <button class="boton_producto btn btn-primary" onclick=" agregar()">AÑADIR AL CARRITO</button>
+                                        <button class="boton_producto btn btn-primary" onclick="carro_compra.agregar_compra(3)">AÑADIR AL CARRITO</button>
                                     </div>
                                 </div>
                             </div>
@@ -111,7 +111,7 @@
                                     <div class="detalles_producto">
                                         <p>Llavero pequeño/p>
                                             <h4 class="precio_producto">$450</h4>
-                                            <button class="boton_producto btn btn-primary" onclick=" agregar()">AÑADIR AL CARRITO</button>
+                                            <button class="boton_producto btn btn-primary" onclick="carro_compra.agregar_compra(4)">AÑADIR AL CARRITO</button>
                                     </div>
                                 </div>
                             </div>
@@ -125,7 +125,7 @@
                                     <div class="detalles_producto">
                                         <p>Llaverito de perro/a </p>
                                         <h4 class="precio_producto">$500</h4>
-                                        <button class="boton_producto btn btn-primary" onclick=" agregar()">AÑADIR AL CARRITO</button>
+                                        <button class="boton_producto btn btn-primary" onclick="carro_compra.agregar_compra(5)">AÑADIR AL CARRITO</button>
                                     </div>
                                 </div>
                             </div>
@@ -137,7 +137,7 @@
                                     <div class="detalles_producto">
                                         <p>Llaverito de gato/a</p>
                                         <h4 class="precio_producto">$450</h4>
-                                        <button class="boton_producto btn btn-primary" onclick=" agregar()">AÑADIR AL CARRITO</button>
+                                        <button class="boton_producto btn btn-primary" onclick="carro_compra.agregar_compra(6)">AÑADIR AL CARRITO</button>
                                     </div>
                                 </div>
                             </div>
@@ -176,7 +176,7 @@
                     <div class="col-12">
                         <div class=" d-flex align-items-center">
                             <p class="mb-0">Total</p>
-                            <p class="ml-4 mb-0">$0</p>
+                            <p class="ml-4 mb-0" id="precio-total">$0</p>
                             <button class="btn btn-success ml-auto" type="button" data-toggle="modal" data-target="#comprarModal">Comprar</button>
                         </div>
                     </div>

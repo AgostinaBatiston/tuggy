@@ -1,33 +1,13 @@
-var usuario_email = [];
-var usuario_mensaje = [];
-
-function enviar_datos() {
-
-    var email = document.getElementById("emailContacto").value;
-    usuario_email.push(email);
-    var mensaje = document.getElementById("mensajeContacto").value;
-    usuario_mensaje.push(mensaje);
-    console.log("Email: " + email + "   Mensaje: " + mensaje);
-}
-
-
-
-
-
-
-
-
-
-var datos = {
+var datos = [{
     "productos": [
-        { "nombre": "Alphonse y edward", "precio": 900 },
-        { "nombre": "Gollum", "precio": 600 },
-        { "nombre": "Llaverito", "precio": 300 },
-        { "nombre": "Llavero", "precio": 450 },
-        { "nombre": "Llavero perro/a", "precio": 500 },
-        { "nombre": "Llavero gato/a", "precio": 450 },
+        { "id": 1, "nombre": "Alphonse y edward", "precio": 900 },
+        { "id": 2, "nombre": "Gollum", "precio": 650 },
+        { "id": 3, "nombre": "Llaverito", "precio": 300 },
+        { "id": 4, "nombre": "Llavero", "precio": 450 },
+        { "id": 5, "nombre": "Llavero perro/a", "precio": 500 },
+        { "id": 6, "nombre": "Llavero gato/a", "precio": 450 },
     ]
-};
+}];
 
 
 class Producto {
@@ -43,13 +23,15 @@ class Producto {
 
 
 class Carrito_compra {
-    constructor(numero_carro) {
-        this.numero_carro = numero_carro;
+    constructor() {
+        //this.numero_carro = numero_carro;
         this.carro = [];
     }
 
     agregar_compra = function(Producto) {
-        this.carro.push(Producto);
+        var selectedProduct = datos[0].productos.find((prod) => Producto == prod.id)
+        this.carro.push(selectedProduct);
+        this.getPrecio()
     }
     toString = function() {
         return this.numero_carro;
@@ -57,23 +39,24 @@ class Carrito_compra {
     getPrecio = function() {
         var suma = 0;
         for (var i = 0; i < this.carro.length; i++) {
-            suma = suma + this.carro[i].getPrecioFinal();
+            suma = suma + this.carro[i].precio;
         }
-
-        return suma;
+        document.getElementById('precio-total').innerText = "$" + suma
+            //return suma;
     }
 
 }
 
+var carro_compra = new Carrito_compra();
 
-function agregar() {
-    var carro_compra = new Carrito_compra();
-    for (var i = 0; i < datos.productos.length; i++) {
-        carro_compra.agregar_compra(new Producto(datos.productos[i].nombre, datos.productos[i].precio));
-    }
-    console.log(carro_compra.getPrecio());
+// function agregar() {
 
-}
+//     for (var i = 0; i < datos.productos.length; i++) {
+//         carro_compra.agregar_compra(new Producto(datos.productos[i].nombre, datos.productos[i].precio));
+//     }
+//     console.log(carro_compra.getPrecio());
+
+// }
 
 
 function sumar_productos() {
