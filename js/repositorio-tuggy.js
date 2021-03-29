@@ -20,26 +20,24 @@ function enviar_datos() {
 
 var datos = {
     "productos": [
-        { "nombre": "Alphonse y edward", "precio": 1000, "descuento": 10 },
-        { "nombre": "Pidgeotto", "precio": 800, "descuento": 10 },
-        { "nombre": "Llaverito", "precio": 450, "descuento": 10 },
-        { "nombre": "Llavero", "precio": 550, "descuento": 10 },
-        { "nombre": "Llavero perro/a", "precio": 600, "descuento": 10 },
-        { "nombre": "Llavero gato/a", "precio": 550, "descuento": 10 },
+        { "nombre": "Alphonse y edward", "precio": 900 },
+        { "nombre": "Gollum", "precio": 600 },
+        { "nombre": "Llaverito", "precio": 300 },
+        { "nombre": "Llavero", "precio": 450 },
+        { "nombre": "Llavero perro/a", "precio": 500 },
+        { "nombre": "Llavero gato/a", "precio": 450 },
     ]
 };
 
 
-
-
 class Producto {
-    constructor(nombre, precio, descuento) {
+    constructor(nombre, precio) {
         this.nombre = nombre;
         this.precio = precio;
-        this.descuento = descuento;
+
     }
     getPrecioFinal = function() {
-        return this.precio - this.precio * (this.descuento / 100);
+        return this.precio;
     }
 }
 
@@ -50,15 +48,15 @@ class Carrito_compra {
         this.carro = [];
     }
 
-    agregar_compra = function(producto) {
-        this.carro.push(producto);
+    agregar_compra = function(Producto) {
+        this.carro.push(Producto);
     }
     toString = function() {
         return this.numero_carro;
     }
     getPrecio = function() {
         var suma = 0;
-        for (var i = 0; i < this.carro.lenght; i++) {
+        for (var i = 0; i < this.carro.length; i++) {
             suma = suma + this.carro[i].getPrecioFinal();
         }
 
@@ -69,9 +67,9 @@ class Carrito_compra {
 
 
 function agregar() {
-    var carro_compra = new Carrito_compra(1);
+    var carro_compra = new Carrito_compra();
     for (var i = 0; i < datos.productos.length; i++) {
-        carro_compra.agregar_compra(new Producto(datos.productos[i].nombre, datos.productos[i].precio, datos.productos[i].descuento));
+        carro_compra.agregar_compra(new Producto(datos.productos[i].nombre, datos.productos[i].precio));
     }
     console.log(carro_compra.getPrecio());
 
@@ -90,24 +88,3 @@ function sumar_productos() {
         document.body.appendChild(parrafo);
     }
 }
-
-
-
-/*
-var lista = document.createElement("div");
-lista.classList.add("mi_lista");
-document.body.appendChild(lista);
-
-for (var i = 0; i < 10; i++) {
-    var producto = document.createElement("p");
-    producto.innerHTML = "Producto " + i;
-    if (i % 2 == 0) {
-        var bold = document.createElement("b");
-        bold.appendChild(producto);
-        lista.appendChild(bold);
-    } else {
-        lista.appendChild(producto);
-    }
-
-
-} */
