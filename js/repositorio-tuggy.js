@@ -85,3 +85,18 @@ $(".alerta_compra").hide().parent();
 $(".boton_producto").click(function() {
     $(".alerta_compra").show();
 })
+
+var AgregarBotonesCarrito = document.querySelectorAll(".boton_producto");
+AgregarBotonesCarrito.forEach((agregarCarrito) => {
+    agregarCarrito.addEventListener('click', clickCarrito);
+});
+
+function clickCarrito(event) {
+    var boton = event.target;
+    var productoTienda = boton.closest('.productoTienda');
+
+    var producto_titulo = productoTienda.querySelector('.producto_titulo').textContent;
+    var precio_producto = productoTienda.querySelector('.precio_producto').textContent;
+    var imagenTienda = productoTienda.querySelector('.imagenTienda').src;
+    //console.log(precio_producto, producto_titulo, imagenTienda);
+}
