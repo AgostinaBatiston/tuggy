@@ -58,7 +58,7 @@ var carro_compra = new Carrito_compra();
 
 // }
 
-
+/*
 function sumar_productos() {
 
     var parrafo = document.createElement("p");
@@ -70,4 +70,12 @@ function sumar_productos() {
         parrafo.innerHTML = "Articulo: " + datos.productos[i].nombre + " Precio: " + datos.productos[i].precio;
         document.body.appendChild(parrafo);
     }
+}
+*/
+
+$('#boton_comprar').click(mostrarAlerta)
+
+function mostrarAlerta() {
+
+    alert('No hiciste ninguna compra');
 }
