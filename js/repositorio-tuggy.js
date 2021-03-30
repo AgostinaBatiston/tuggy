@@ -1,3 +1,4 @@
+/*
 var datos = [{
     "productos": [
         { "id": 1, "nombre": "Alphonse y edward", "precio": 900 },
@@ -8,6 +9,8 @@ var datos = [{
         { "id": 6, "nombre": "Llavero gato/a", "precio": 450 },
     ]
 }];
+
+
 
 
 class Producto {
@@ -48,6 +51,9 @@ class Carrito_compra {
 }
 
 var carro_compra = new Carrito_compra();
+
+*/
+
 
 // function agregar() {
 
@@ -91,6 +97,10 @@ AgregarBotonesCarrito.forEach((agregarCarrito) => {
     agregarCarrito.addEventListener('click', clickCarrito);
 });
 
+var contenedorDeProductos = document.querySelector('.ContenedorDeProductos');
+
+
+
 function clickCarrito(event) {
     var boton = event.target;
     var productoTienda = boton.closest('.productoTienda');
@@ -99,4 +109,34 @@ function clickCarrito(event) {
     var precio_producto = productoTienda.querySelector('.precio_producto').textContent;
     var imagenTienda = productoTienda.querySelector('.imagenTienda').src;
     //console.log(precio_producto, producto_titulo, imagenTienda);
+
+    agregarProductosAlCarrito(producto_titulo, precio_producto, imagenTienda);
+}
+
+function agregarProductosAlCarrito(producto_titulo, precio_producto, imagenTienda) {
+    var div_carrito = document.createElement('div');
+    var contenidoCarrito = `
+    <div class="row div_carrito">
+          <div class="col-6">
+              <div class="d-flex align-items-center h-100 border-bottom pb-2 pt-3">
+                  <img src=${imagenTienda} class="shopping-cart-image">
+                  <h6 class="TituloProductoCarrito text-truncate ml-3 mb-0">${producto_titulo}</h6>
+              </div>
+          </div>
+          <div class="col-2">
+              <div class=" d-flex align-items-center h-100 border-bottom pb-2 pt-3">
+                  <p class="precio_producto mb-0 PrecioProductoCarrito">${precio_producto}</p>
+              </div>
+          </div>
+          <div class="col-4">
+              <div
+                  class="d-flex justify-content-between align-items-center h-100 border-bottom pb-2 pt-3">
+                  <input class="shopping-cart-quantity-input shoppingCartItemQuantity" type="number"
+                      value="1">
+
+              </div>
+          </div>
+      </div>`;
+    div_carrito.innerHTML = contenidoCarrito;
+    contenedorDeProductos.append(div_carrito);
 }
