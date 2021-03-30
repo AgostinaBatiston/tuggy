@@ -79,3 +79,9 @@ function mostrarAlerta() {
 
     alert('No hiciste ninguna compra');
 }
+
+
+$(".alerta_compra").hide().parent();
+$(".boton_producto").click(function() {
+    $(".alerta_compra").show();
+})
