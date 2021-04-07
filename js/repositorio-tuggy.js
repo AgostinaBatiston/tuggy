@@ -88,6 +88,16 @@ for (let dato of DATOS) {
     crear_elemento(dato);
 }
 
+let botones = document.getElementsByClassName("botonCarrito");
+
+for (const boton of botones) {
+    boton.onclick = seleccionarProducto;
+}
+
+function seleccionarProducto(evento) {
+    alert("Producto vendido");
+}
+
 function crear_elemento(dato) {
     let nuevoElemento = document.createElement("div");
     nuevoElemento.id = PREFIJO + dato.id;
@@ -95,6 +105,7 @@ function crear_elemento(dato) {
                                 <h3 class='Titulo_producto'> ${dato.producto} </h3>
                                 <img src= ${dato.imagen} class='seccion__imagen'></img>
                                 <h4> ${dato.precio} </h4>
+                                <button class='btn btn-success ml-auto botonCarrito'>Agregar al carrito</button>
                                 </div>`
 
 
