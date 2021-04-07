@@ -1,4 +1,4 @@
-const Datos = [{
+const DATOS = [{
     "id": 1,
     "producto": "Batman y robin",
     "imagen": "./css/imagenes/batman_robin.jpg",

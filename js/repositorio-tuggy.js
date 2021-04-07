@@ -79,6 +79,23 @@ function sumar_productos() {
 }
 */
 
+let productos_seleccionados = [];
+const PREFIJO = "productoID";
+
+let contenedor_productos = document.getElementById("contenidoGenerado");
+
+for (let dato of DATOS) {
+    crear_elemento(dato);
+}
+
+function crear_elemento(dato) {
+    let nuevoElemento = document.createElement("div");
+    nuevoElemento.id = PREFIJO + dato.id;
+    nuevoElemento.innerHTML = "<h3 class='Titulo_producto'>" + dato.producto + "</h3><h4>" + dato.precio + "</h4>"
+    contenedor_productos.appendChild(nuevoElemento);
+}
+
+
 $('#boton_comprar').click(mostrarAlerta)
 
 function mostrarAlerta() {
