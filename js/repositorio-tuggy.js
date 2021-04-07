@@ -91,7 +91,13 @@ for (let dato of DATOS) {
 function crear_elemento(dato) {
     let nuevoElemento = document.createElement("div");
     nuevoElemento.id = PREFIJO + dato.id;
-    nuevoElemento.innerHTML = "<h3 class='Titulo_producto'>" + dato.producto + "</h3><h4>" + dato.precio + "</h4>"
+    nuevoElemento.innerHTML = ` <div class='productoTienda'>
+                                <h3 class='Titulo_producto'> ${dato.producto} </h3>
+                                <img src= ${dato.imagen} class='seccion__imagen'></img>
+                                <h4> ${dato.precio} </h4>
+                                </div>`
+
+
     contenedor_productos.appendChild(nuevoElemento);
 }
 
