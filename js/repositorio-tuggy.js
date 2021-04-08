@@ -153,7 +153,18 @@ function crear_elemento(dato) {
 
 
 
-
+// ANIMACION CON JQUERY
+$("body").prepend('<h1 class="text-center titulo_carrito">Carrito</h1>');
+$(".titulo_carrito").animate({
+        left: '250px',
+        opacity: '0.5',
+        height: '150px',
+        width: '150px'
+    },
+    "slow",
+    function() {
+        console.log("final de animación");
+    });
 
 
 
