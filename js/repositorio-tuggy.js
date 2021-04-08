@@ -9,27 +9,45 @@ var datos = [{
         { "id": 6, "nombre": "Llavero gato/a", "precio": 450 },
     ]
 }];
-
+*/
 
 
 
 class Producto {
-    constructor(nombre, precio) {
-        this.nombre = nombre;
-        this.precio = precio;
+    constructor(datos) {
+        this.id = parseInt(datos.id);
+        this.producto = datos.producto;
+        this.precio = parseInt(datos.precio);
+        this.cantidad = 1;
 
     }
-    getPrecioFinal = function() {
-        return this.precio;
+    descuento(resta) {
+        this.precio -= resta;
+    }
+
+    sumarCantidad() {
+        this.cantidad++;
     }
 }
 
 
+
+/*
 class Carrito_compra {
     constructor() {
         //this.numero_carro = numero_carro;
         this.carro = [];
     }
+
+    getPrecio = function() {
+        var suma = 0;
+        for (var i = 0; i < this.carro.length; i++) {
+            suma = suma + this.carro[i].precio;
+        }
+        document.getElementById('precio-total').innerText = "$" + suma
+            //return suma;
+    }
+}
 
     agregar_compra = function(Producto) {
         var selectedProduct = datos[0].productos.find((prod) => Producto == prod.id)
@@ -39,14 +57,7 @@ class Carrito_compra {
     toString = function() {
         return this.numero_carro;
     }
-    getPrecio = function() {
-        var suma = 0;
-        for (var i = 0; i < this.carro.length; i++) {
-            suma = suma + this.carro[i].precio;
-        }
-        document.getElementById('precio-total').innerText = "$" + suma
-            //return suma;
-    }
+   
 
 }
 
@@ -79,7 +90,8 @@ function sumar_productos() {
 }
 */
 
-let productos_seleccionados = [];
+
+let productosSeleccionados = [];
 const PREFIJO = "productoID";
 
 let contenedor_productos = document.getElementById("contenidoGenerado");
@@ -88,14 +100,49 @@ for (let dato of DATOS) {
     crear_elemento(dato);
 }
 
-let botones = document.getElementsByClassName("botonCarrito");
+asociarEventos();
 
-for (const boton of botones) {
-    boton.onclick = seleccionarProducto;
-}
+
+
 
 function seleccionarProducto(evento) {
-    alert("Producto vendido");
+
+    let buscarProducto = productosSeleccionados.find(elemento => elemento.id == evento.target.id);
+    if (buscarProducto == undefined) {
+        let productoSeleccionado = DATOS.find(elemento => elemento.id == evento.target.id);
+        let nuevoProducto = new Producto(productoSeleccionado);
+        nuevoProducto.descuento(50);
+        productosSeleccionados.push(nuevoProducto);
+    } else {
+        buscarProducto.sumarCantidad;
+    }
+
+    //console.log(productoSeleccionado);
+    console.log(productosSeleccionados);
+    agregarCarrito(productosSeleccionados);
+}
+
+
+function agregarCarrito(listado) {
+    let padre = document.getElementById("carrito");
+    let html = '';
+    for (const objeto of listado) {
+        html += `   <div class='container'>
+                        <div class='row'>
+                            <p>${objeto.producto}      ----  ${objeto.precio}</p>
+                        </div>
+                    </div>
+        `;
+    }
+    padre.innerHTML = html;
+}
+
+function asociarEventos() {
+    let botones = document.getElementsByClassName("botonCarrito");
+    for (const boton of botones) {
+        boton.onclick = seleccionarProducto;
+    }
+
 }
 
 function crear_elemento(dato) {
@@ -107,7 +154,7 @@ function crear_elemento(dato) {
                                             <h3 class='Titulo_producto'> ${dato.producto} </h3>
                                             <img src= ${dato.imagen} class='seccion__imagen'></img>
                                             <h4> ${dato.precio} </h4>
-                                            <button class='btn btn-success ml-auto botonCarrito'>Agregar al carrito</button>
+                                            <button class='btn btn-success ml-auto botonCarrito' id='${dato.id}'>Agregar al carrito</button>
                                         </div>
                                     </div>
                                 </div>`
@@ -117,6 +164,13 @@ function crear_elemento(dato) {
 }
 
 
+
+
+
+
+
+
+/*
 $('#boton_comprar').click(mostrarAlerta)
 
 function mostrarAlerta() {
@@ -129,3 +183,4 @@ $(".alerta_compra").hide().parent();
 $(".boton_producto").click(function() {
     $(".alerta_compra").show();
 })
+*/
