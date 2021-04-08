@@ -1,22 +1,22 @@
 const APIPROVINCIAS = "https://apis.datos.gob.ar/georef/api/provincias"
 
 $(document).ready(function() {
-    //OCULTAMOS EL BOTÓN QUE DISPARA EL MODAL
+
     $("#btnModal").hide();
-    //LLAMAR AL API DE PROVINCIAS
+
     $.get(APIPROVINCIAS, function(datos, estado) {
         $('#selectProvincias').empty();
         //console.log(datos);
-        //POR CADA PROVINCIA EN DATOS PROVINCIA CREAMOS UN OPTION
+
         for (const provincia of datos.provincias) {
             //console.log(provincia);
             $('#selectProvincias').append(`<option value="${provincia.id}">${provincia.nombre}</option>`)
         }
-        //OCULTAMOS EL SPINNER DEL MODAL
+
         $("#spnModal").hide();
-        //CARGAMOS LOS MUNICIPIOS EN EL SELECT DE MUNICIOPIOS PARA EL PRIMER MUNICIPIO DE LA LISTA
+
         cargarMunicios(datos.provincias[0].id);
-        //MOSTRAMOS EL BOTON QUE DISPARA EL MODAL
+
         $("#btnModal").show();
     });
 });
@@ -24,9 +24,9 @@ $(document).ready(function() {
 $('#selectProvincias').change(function(e) {
     // console.log($(this).val());
     // console.log($(e.target).val());
-    //CADA VEZ QUE CAMBIA EL VALOR DEL SELECT SE REALIZAR UNA LLAMADA AL API PARA CARGAR LOS MUNICIPIOS CORRESPONDIENTES.
+
     let idProvincia = $(this).val();
-    //LA LLAMADA AL API PARA LOS MUNICIPIOS SE REALIZA MEDIANTE UNA FUNCIÒN. ASI PUEDE UTILIZARSE EN LA CARGA INICIAL TAMBIEN.
+
     cargarMunicios(idProvincia);
     /*
     let apiMunicipios = `https://apis.datos.gob.ar/georef/api/municipios?provincia=${idProvincia}&campos=id,nombre&max=100`
@@ -41,7 +41,7 @@ $('#selectProvincias').change(function(e) {
     });
     */
 });
-//FUNCION QUE REALIZA LA LLAMADA AL API PARA OBTENER LOS MUNICIPIOS SEGUN EL ID DE LA PROVINCIA
+
 function cargarMunicios(id) {
     let apiMunicipios = `https://apis.datos.gob.ar/georef/api/municipios?provincia=${id}&campos=id,nombre&max=100`
     console.log(apiMunicipios);
