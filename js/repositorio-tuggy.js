@@ -1,18 +1,3 @@
-/*
-var datos = [{
-    "productos": [
-        { "id": 1, "nombre": "Alphonse y edward", "precio": 900 },
-        { "id": 2, "nombre": "Gollum", "precio": 650 },
-        { "id": 3, "nombre": "Llaverito", "precio": 300 },
-        { "id": 4, "nombre": "Llavero", "precio": 450 },
-        { "id": 5, "nombre": "Llavero perro/a", "precio": 500 },
-        { "id": 6, "nombre": "Llavero gato/a", "precio": 450 },
-    ]
-}];
-*/
-
-
-
 class Producto {
     constructor(datos) {
         this.id = parseInt(datos.id);
@@ -144,6 +129,8 @@ function asociarEventos() {
     }
 
 }
+
+
 
 function crear_elemento(dato) {
     let nuevoElemento = document.createElement("div");
