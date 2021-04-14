@@ -56,7 +56,7 @@ var carro_compra = new Carrito_compra();
 //     for (var i = 0; i < datos.productos.length; i++) {
 //         carro_compra.agregar_compra(new Producto(datos.productos[i].nombre, datos.productos[i].precio));
 //     }
-//     console.log(carro_compra.getPrecio());
+
 
 // }
 
@@ -102,8 +102,7 @@ function seleccionarProducto(evento) {
         buscarProducto.sumarCantidad;
     }
 
-    //console.log(productoSeleccionado);
-    console.log(productosSeleccionados);
+    
     agregarCarrito(productosSeleccionados);
 }
 
@@ -151,18 +150,6 @@ function crear_elemento(dato) {
 
 
 
-// ANIMACION CON JQUERY
-$("body").prepend('<h1 class="text-center titulo_carrito">Carrito</h1>');
-$(".titulo_carrito").animate({
-        left: '250px',
-        opacity: '0.5',
-        height: '150px',
-        width: '150px'
-    },
-    "slow",
-    function() {
-        console.log("final de animación");
-    });
 
 
 

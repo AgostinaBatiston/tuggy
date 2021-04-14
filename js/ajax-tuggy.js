@@ -1,6 +1,4 @@
 $.getJSON("data/productos.json", function(datos, estado) {
-    console.log(estado);
-    console.log(datos);
     for (let producto of datos) {
         $("#contenidoGenerado").append(crearComponente(producto));
     }
