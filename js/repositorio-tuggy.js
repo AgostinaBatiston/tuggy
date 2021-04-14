@@ -1,3 +1,4 @@
+/*
 class Producto {
     constructor(datos) {
         this.id = parseInt(datos.id);
@@ -17,7 +18,6 @@ class Producto {
 
 
 
-/*
 class Carrito_compra {
     constructor() {
         //this.numero_carro = numero_carro;
@@ -74,7 +74,7 @@ function sumar_productos() {
     }
 }
 */
-
+/*
 
 let productosSeleccionados = [];
 const PREFIJO = "productoID";
@@ -130,8 +130,6 @@ function asociarEventos() {
 
 }
 
-
-
 function crear_elemento(dato) {
     let nuevoElemento = document.createElement("div");
     nuevoElemento.id = PREFIJO + dato.id;
@@ -149,7 +147,7 @@ function crear_elemento(dato) {
 
     contenedor_productos.appendChild(nuevoElemento);
 }
-
+*/
 
 
 
