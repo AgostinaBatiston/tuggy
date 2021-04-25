@@ -1,3 +1,4 @@
+/*
 $.getJSON("data/productos.json", function(datos, estado) {
     for (let producto of datos) {
         $("#contenidoGenerado").append(crearComponente(producto));
@@ -20,3 +21,5 @@ function crearComponente(producto) {
                 </div>
             </div>`;
 }
+
+*/
