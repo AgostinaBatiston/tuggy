@@ -157,6 +157,11 @@ body {
     font-weight: 600;
 }
 
+.imagenTienda {
+    width: 260px;
+    height: 200px;
+}
+
 hr {
     box-sizing: content-box;
     height: 0;
