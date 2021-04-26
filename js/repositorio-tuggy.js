@@ -27,19 +27,100 @@
             { id: 'P019', nombre: "Taki y Mitsuha", imagen: "yourName.jpg", detalles: "Peluches pequeños pintados a mano. Medidas: 12x7cm", precio: 750 },
             { id: 'P020', nombre: "Thomas Shelby", imagen: "Llavero.jpg", detalles: "Llavero pequeño. Medidas: 12x7cm", precio: 430 }
         ];
-    }
+        this.constructor = function() {
+            if (!localStorage.getItem("carrito")) {
+                localStorage.setItem('carrito', '[]');
+            }
+            this.getCarrito = JSON.parse(localStorage.getItem("carrito"));
+            this.agregarItem = function(item) {
+                for (i of this.catalogo) {
+                    if (i.id === item) {
+                        var registro = i
+                    }
+                }
+                if (!registro) {
+                    return
+                }
 
-    function Carrito_View() {
-
-    }
-
-    var carrito = new Carrito();
-    document.addEventListener('DOMContentLoaded', function() {
-        for (var i in ) {
-            if (()) {
+                for (i of this.getCarrito) {
+                    if (i.id === item) {
+                        i.cantidad++;
+                        console.log(this.getCarrito);
+                        localStorage.setItem("carrito", JSON.stringify(this.getCarrito))
+                        return
+                    }
+                }
+                registro.cantidad = 1;
+                this.getCarrito.push(registro);
+                console.log(this.getCarrito);
+                localStorage.setItem("carrito", JSON.stringify(this.getCarrito))
+                return
 
             }
         }
+    }
+
+    function Carrito_View() {
+        this.renderCatalogo = function() {
+            var template = ``;
+            for (var i in carrito.catalogo) {
+                template += `
+            <div class="column is-one-quarter">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="./css/imagenes/${carrito.catalogo[i].imagen}" alt="Placeholder">
+                    </div>
+                    <div class="card-content">
+                        <h2 class="title is-3">${carrito.catalogo[i].nombre}</h2>
+                        <p>${carrito.catalogo[i].detalles}</p>
+                        <br>
+                        <h3 class="subtitle is-4">Precio: <strong>$${carrito.catalogo[i].precio}</strong></h3>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="card-footer-item" id="addItem" data-producto="${carrito.catalogo[i].id}">Agregar al Carrito</a>
+                    </div>
+                    </div>
+                </div>
+           `;
+
+            }
+            $("#catalogo").innerHTML = template;
+
+
+        }
+        this.showModal = function() {
+            $("#modal").classList.toggle('is-active');
+        }
+        this.hideModal = function(ev) {
+            if (ev.target.classList.contains("toggle")) {
+                this.showModal();
+            }
+        }
+    }
+
+    var carrito = new Carrito();
+    var carrito_view = new Carrito_View();
+
+    document.addEventListener('DOMContentLoaded', function() {
+        carrito_view.renderCatalogo();
+        carrito.constructor();
+        console.log(carrito.getCarrito);
+
+    });
+
+    $("#btn_carrito").addEventListener("click", function() {
+        carrito_view.showModal();
+    });
+    $("#modal").addEventListener("click", function(ev) {
+        carrito_view.hideModal(ev);
     })
+
+    $("#catalogo").addEventListener("click", function(ev) {
+        ev.preventDefault();
+        if (ev.target.id === "addItem") {
+            var id = ev.target.dataset.producto;
+            carrito.agregarItem(id);
+        }
+    });
 
 })();
