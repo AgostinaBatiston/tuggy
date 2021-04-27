@@ -57,6 +57,13 @@
                 return
 
             }
+            this.getTotal = function() {
+                var total = 0;
+                for (i of this.getCarrito) {
+                    total += parseFloat(i.cantidad) * parseFloat(i.precio);
+                }
+                return total;
+            }
         }
     }
 
@@ -96,6 +103,26 @@
                 this.showModal();
             }
         }
+        this.renderCarrito = function() {
+            template = ``;
+            for (i of carrito.getCarrito) {
+                template += `
+                <div class="columns">
+                    <div class="column is-3">
+                    <figure>
+                        <img src="./css/imagenes/${i.imagen}" alt="">
+                    </figure>
+                    </div>
+                        <div class="column is-3">${i.nombre}</div>
+                        <div class="column is-2 has-text-centered">$${i.precio}</div>
+                        <div class="column is-1 has-text-centered">${i.cantidad}</div>
+                        <div class="column is-2 has-text-centered"><strong><i>${i.cantidad * i.precio}</i></strong></div>
+                        <div class="column is-1"><p class="field"><a href="#" class="button is-danger"><span class="icon"><i class="fa fa-trash-o" id="deleteProducto" data-producto="${i.id}"></i></span></a></p></div>
+                </div>
+                `;
+            }
+            $("#productosCarrito").innerHTML = template;
+        }
     }
 
     var carrito = new Carrito();
@@ -103,8 +130,10 @@
 
     document.addEventListener('DOMContentLoaded', function() {
         carrito_view.renderCatalogo();
+        carrito_view.renderCarrito();
         carrito.constructor();
         console.log(carrito.getCarrito);
+        console.log(carrito.getTotal());
 
     });
 
